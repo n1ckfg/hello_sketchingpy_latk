@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <!-- PyScript -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.2/core.css">
+        <script type="module" src="https://pyscript.net/releases/2023.11.2/core.js"></script>
+    </head>
+    <body>
+        <py-config>
+        {
+            "packages": ["sketchingpy==0.1.8", "latk"]
+        }
+        </py-config>
+
+        <!-- You may need to change this ID to match your code. -->
+        <div id="sketch-load-message">Loading...</div>
+        <canvas id="sketch-canvas"></canvas>
+
+        <!-- You can link the script as shown below or use py-script to inline -->
+        <script type="py" src="main.py"></script>
+    </body>
+</html>
