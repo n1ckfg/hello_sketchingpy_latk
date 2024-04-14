@@ -1,5 +1,6 @@
 import sketchingpy
 import latk
+import time
 
 width = 500
 height = 500
@@ -11,9 +12,14 @@ latk = latk.Latk("latk_logo.latk")
 
 counter = 0
 strokeWeightVal = 4
+fps = 1.0 / 12.0 * 1000.0
+elapsedTime = 0
 
 def render(sketch):
     global counter
+    global fps
+    global elapsedTime
+
     sketch.clear("#000000")
 
     for layer in latk.layers:
@@ -31,9 +37,13 @@ def render(sketch):
             if (len(points) > 1):
                 draw_line(points, col)
     
-    counter += 1
-    if (counter > len(latk.layers[0].frames) - 1):
-        counter = 0
+    elapsedTime += 33
+
+    if (elapsedTime > fps):
+        counter += 1
+        if (counter > len(latk.layers[0].frames) - 1):
+            counter = 0
+        elapsedTime = 0
 
 def rgb_to_hex(r, g, b):
     return '#%02x%02x%02x' % (r, g, b)
